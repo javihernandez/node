@@ -62,50 +62,50 @@ const char* ToCString(const v8::String::Utf8Value& value) {
 
 static Handle<Value> Verbose(const Arguments& args) {
   HandleScope scope;
-  
+
   if (args.Length() > 0) {
-    v8::String::Utf8Value msg(args[0]);  
-    LOGV(ToCString(msg));
+    v8::String::Utf8Value msg(args[0]);
+    LOGV(ToCString(msg), "%s");
   }
   return scope.Close(Undefined());
 }
 
 static Handle<Value> Debug(const Arguments& args) {
   HandleScope scope;
-  
+
   if (args.Length() > 0) {
-    v8::String::Utf8Value msg(args[0]);  
-    LOGD(ToCString(msg));
+    v8::String::Utf8Value msg(args[0]);
+    LOGD(ToCString(msg), "%s");
   }
   return scope.Close(Undefined());
 }
 
 static Handle<Value> Info(const Arguments& args) {
   HandleScope scope;
-  
+
   if (args.Length() > 0) {
-    v8::String::Utf8Value msg(args[0]);  
-    LOGI(ToCString(msg));
+    v8::String::Utf8Value msg(args[0]);
+    LOGI(ToCString(msg), "%s");
   }
   return scope.Close(Undefined());
 }
 
 static Handle<Value> Warn(const Arguments& args) {
   HandleScope scope;
-  
+
   if (args.Length() > 0) {
-    v8::String::Utf8Value msg(args[0]);  
-    LOGW(ToCString(msg));
+    v8::String::Utf8Value msg(args[0]);
+    LOGW(ToCString(msg), "%s");
   }
   return scope.Close(Undefined());
 }
 
 static Handle<Value> Error(const Arguments& args) {
   HandleScope scope;
-  
+
   if (args.Length() > 0) {
-    v8::String::Utf8Value msg(args[0]);  
-    LOGE(ToCString(msg));
+    v8::String::Utf8Value msg(args[0]);
+    LOGE(ToCString(msg), "%s");
   }
   return scope.Close(Undefined());
 }
@@ -113,7 +113,7 @@ static Handle<Value> Error(const Arguments& args) {
 void Androidlog::Initialize(v8::Handle<v8::Object> target) {
   HandleScope scope;
 
-  NODE_SET_METHOD(target, "log", Verbose);
+  NODE_SET_METHOD(target, "log", Debug);
   NODE_SET_METHOD(target, "verbose", Verbose);
   NODE_SET_METHOD(target, "debug", Debug);
   NODE_SET_METHOD(target, "info", Info);
